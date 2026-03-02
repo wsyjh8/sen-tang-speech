@@ -4,8 +4,9 @@ import json
 import sys
 from pathlib import Path
 
+from app.contracts import FORBIDDEN_FIELD_NAMES, REQUIRED_REPORT_KEYS, VALID_SEVERITIES, SEVERITY_RANK
 from app.mock_report import build_mock_report
-from app.rule_engine.top1_ranker import rank_triggers, SEVERITY_RANK, VALID_SEVERITIES
+from app.rule_engine.top1_ranker import rank_triggers
 from eval.canonical import canonical_rule_engine
 
 
@@ -66,8 +67,7 @@ def run_min_regression() -> None:
                 f.write(canonical)
             
             # === Assertion 1: Top-level required fields exist ===
-            required_top_keys = {"pol_version", "session", "scores", "rule_engine", "llm_feedback", "warnings"}
-            assert required_top_keys.issubset(report.keys()), f"Missing top-level keys: {required_top_keys - set(report.keys())}"
+            assert REQUIRED_REPORT_KEYS.issubset(report.keys()), f"Missing top-level keys: {REQUIRED_REPORT_KEYS - set(report.keys())}"
             
             # === Assertion 2: warnings is list and not None ===
             assert isinstance(report["warnings"], list), "warnings must be a list"
@@ -116,8 +116,8 @@ def run_min_regression() -> None:
                     f"weight mismatch: {trigger['weight']} != {expected_weight}"
                 
                 # Check forbidden fields
-                assert "rule_id" not in trigger, "rule_id is forbidden in trigger"
-                assert "evidence_refs" not in trigger, "evidence_refs is forbidden in trigger"
+                for forbidden_field in FORBIDDEN_FIELD_NAMES:
+                    assert forbidden_field not in trigger, f"{forbidden_field} is forbidden in trigger"
             
             # === Assertion 9: Verify sort order matches reference ===
             if len(output_triggers) > 1:

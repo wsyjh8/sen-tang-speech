@@ -2,14 +2,15 @@
 
 from typing import Any
 
-# Rule ID -> Drill ID mapping
-RULE_TO_DRILL_MAP = {
-    "BR-OPP-001-R-TASK-001": "ONE_LINE_TAKEAWAY",
-    "BR-OPP-001-R-STRUCT-001": "PRESET_OPENERS",
-    "BR-OPP-001-R-SPEED-001": "PRESET_OPENERS",  # Default; wpm logic handled in get_drill_id
-    "BR-OPP-001-R-FILLER-001": "SILENCE_REPLACE",
-    "BR-OPP-001-R-REPEAT-001": "REPLACEMENT_BANK",
-}
+from app.contracts import (
+    DRILL_ALLOWLIST,
+    FORBIDDEN_FIELD_NAMES,
+    RULE_ID_TO_DRILL_ID,
+    VALID_SEVERITIES,
+)
+
+# Rule ID -> Drill ID mapping (alias for backward compatibility in this file)
+RULE_TO_DRILL_MAP = RULE_ID_TO_DRILL_ID
 
 # Drill templates
 DRILL_TEMPLATES = {
@@ -168,9 +169,9 @@ def get_drill_id(top_trigger_id: str, wpm: float | None = None) -> str:
             return "PRESET_OPENERS"
     
     # Direct mapping
-    if top_trigger_id in RULE_TO_DRILL_MAP:
-        return RULE_TO_DRILL_MAP[top_trigger_id]
-    
+    if top_trigger_id in RULE_ID_TO_DRILL_ID:
+        return RULE_ID_TO_DRILL_ID[top_trigger_id]
+
     # Unknown rule_id -> force ONE_LINE_TAKEAWAY
     return "ONE_LINE_TAKEAWAY"
 

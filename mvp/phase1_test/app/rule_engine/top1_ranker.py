@@ -2,10 +2,7 @@
 
 from typing import Optional
 
-
-# Severity ranking: P0 > P1 > P2
-SEVERITY_RANK = {"P0": 3, "P1": 2, "P2": 1}
-VALID_SEVERITIES = {"P0", "P1", "P2"}
+from app.contracts import SEVERITY_RANK, VALID_SEVERITIES
 
 
 def _sort_key(trigger: dict) -> tuple:

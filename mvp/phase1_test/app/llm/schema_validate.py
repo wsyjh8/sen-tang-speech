@@ -2,24 +2,17 @@
 
 from typing import Any
 
+from app.contracts import (
+    DRILL_ALLOWLIST,
+    REQUIRED_ACCEPTANCE_FIELDS,
+    REQUIRED_DRILL_FIELDS,
+    REQUIRED_EVIDENCE_REF_KEYS,
+    REQUIRED_SUGGESTION_FIELDS,
+)
 
-REQUIRED_SUGGESTION_FIELDS = {
-    "title", "problem", "cause", "evidence_ref", "drill", "acceptance"
-}
-
-REQUIRED_EVIDENCE_REF_FIELDS = {"time_ranges", "text_snippets"}
-
-REQUIRED_DRILL_FIELDS = {"drill_id", "steps", "duration_sec", "tips"}
-
-REQUIRED_ACCEPTANCE_FIELDS = {"metric", "target", "how_to_measure"}
-
-DRILL_ID_ALLOWLIST = {
-    "SILENCE_REPLACE",
-    "PRESET_OPENERS",
-    "REPLACEMENT_BANK",
-    "SLOW_10_PERCENT",
-    "ONE_LINE_TAKEAWAY",
-}
+# Aliases for backward compatibility in this file
+REQUIRED_EVIDENCE_REF_FIELDS = REQUIRED_EVIDENCE_REF_KEYS
+DRILL_ID_ALLOWLIST = DRILL_ALLOWLIST
 
 
 def validate_suggestions(suggestions: Any) -> tuple[bool, str | None]:
