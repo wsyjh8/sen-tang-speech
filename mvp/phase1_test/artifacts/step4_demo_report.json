@@ -1,0 +1,103 @@
+{
+  "pol_version": "POL-v0.1",
+  "session": {
+    "session_id": "e83e05ce-04c8-4289-ba98-d28eb92652fd",
+    "task_type": "IMPROV_60S",
+    "language": "zh",
+    "generated_at": "2026-03-01T20:02:49.618629+00:00"
+  },
+  "scores": {
+    "overall": 80
+  },
+  "rule_engine": {
+    "triggers": [
+      {
+        "id": "demo_boosted",
+        "severity": "P2",
+        "impact_score": 0.5,
+        "weight": 2.5,
+        "priority_score": 1.25,
+        "conflict_priority": 3,
+        "trigger_count": 2,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 6000,
+              "end_ms": 10000
+            }
+          ],
+          "text_snippets": [
+            "demo boosted rule snippet 1",
+            "demo boosted rule snippet 2"
+          ]
+        }
+      },
+      {
+        "id": "demo_base",
+        "severity": "P1",
+        "impact_score": 0.6,
+        "weight": 1.0,
+        "priority_score": 0.6,
+        "conflict_priority": 2,
+        "trigger_count": 3,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 1000,
+              "end_ms": 5000
+            }
+          ],
+          "text_snippets": [
+            "demo base rule snippet"
+          ]
+        }
+      },
+      {
+        "id": "demo_tie_a",
+        "severity": "P0",
+        "impact_score": 0.4,
+        "weight": 1.0,
+        "priority_score": 0.4,
+        "conflict_priority": 1,
+        "trigger_count": 5,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 11000,
+              "end_ms": 15000
+            }
+          ],
+          "text_snippets": [
+            "demo tie-break A"
+          ]
+        }
+      },
+      {
+        "id": "demo_tie_b",
+        "severity": "P0",
+        "impact_score": 0.4,
+        "weight": 1.0,
+        "priority_score": 0.4,
+        "conflict_priority": 1,
+        "trigger_count": 3,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 16000,
+              "end_ms": 20000
+            }
+          ],
+          "text_snippets": [
+            "demo tie-break B"
+          ]
+        }
+      }
+    ],
+    "top_trigger_id": "demo_boosted",
+    "next_target": null
+  },
+  "llm_feedback": {
+    "suggestions": []
+  },
+  "warnings": []
+}

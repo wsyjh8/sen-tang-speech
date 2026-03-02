@@ -1,0 +1,3 @@
+replays=20
+case_name=case1_multiple_rules_triggered
+result=PASS

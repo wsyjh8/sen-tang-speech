@@ -1,0 +1,1 @@
+{"top_trigger_id":"BR-OPP-001-R-TASK-001","triggers":[{"conflict_priority":1,"id":"BR-OPP-001-R-TASK-001","impact_score":0.7,"priority_score":1.4,"severity":"P0","trigger_count":1,"weight":2.0},{"conflict_priority":2,"id":"BR-OPP-002-R-TASK-002","impact_score":0.8,"priority_score":0.8,"severity":"P1","trigger_count":3,"weight":1.0}]}

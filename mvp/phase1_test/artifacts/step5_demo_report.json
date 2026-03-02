@@ -1,0 +1,144 @@
+{
+  "pol_version": "POL-v0.1",
+  "session": {
+    "session_id": "e41bd850-2851-4e88-87d6-1c2e149d0836",
+    "task_type": "IMPROV_60S",
+    "language": "zh",
+    "generated_at": "2026-03-02T03:48:24.305916+00:00"
+  },
+  "scores": {
+    "overall": 80
+  },
+  "rule_engine": {
+    "triggers": [
+      {
+        "id": "demo_boosted",
+        "severity": "P2",
+        "impact_score": 0.5,
+        "weight": 2.5,
+        "priority_score": 1.25,
+        "conflict_priority": 3,
+        "trigger_count": 2,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 6000,
+              "end_ms": 10000
+            }
+          ],
+          "text_snippets": [
+            "demo boosted rule snippet 1",
+            "demo boosted rule snippet 2"
+          ]
+        }
+      },
+      {
+        "id": "demo_base",
+        "severity": "P1",
+        "impact_score": 0.6,
+        "weight": 1.0,
+        "priority_score": 0.6,
+        "conflict_priority": 2,
+        "trigger_count": 3,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 1000,
+              "end_ms": 5000
+            }
+          ],
+          "text_snippets": [
+            "demo base rule snippet"
+          ]
+        }
+      },
+      {
+        "id": "demo_tie_a",
+        "severity": "P0",
+        "impact_score": 0.4,
+        "weight": 1.0,
+        "priority_score": 0.4,
+        "conflict_priority": 1,
+        "trigger_count": 5,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 11000,
+              "end_ms": 15000
+            }
+          ],
+          "text_snippets": [
+            "demo tie-break A"
+          ]
+        }
+      },
+      {
+        "id": "demo_tie_b",
+        "severity": "P0",
+        "impact_score": 0.4,
+        "weight": 1.0,
+        "priority_score": 0.4,
+        "conflict_priority": 1,
+        "trigger_count": 3,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 16000,
+              "end_ms": 20000
+            }
+          ],
+          "text_snippets": [
+            "demo tie-break B"
+          ]
+        }
+      }
+    ],
+    "top_trigger_id": "demo_boosted",
+    "next_target": null
+  },
+  "llm_feedback": {
+    "suggestions": [
+      {
+        "title": "Add a Clear Takeaway",
+        "problem": "Your speech lacks a memorable closing message.",
+        "cause": "Without a takeaway, the audience may forget your main point.",
+        "evidence_ref": {
+          "time_ranges": [
+            {
+              "start_ms": 6000,
+              "end_ms": 10000
+            }
+          ],
+          "text_snippets": [
+            "demo boosted rule snippet 1",
+            "demo boosted rule snippet 2"
+          ]
+        },
+        "drill": {
+          "drill_id": "ONE_LINE_TAKEAWAY",
+          "steps": [
+            "Identify the single most important message of your talk.",
+            "Craft a concise one-sentence summary (15-20 words).",
+            "Place the takeaway at the end of your conclusion.",
+            "Practice delivering it with emphasis and pause."
+          ],
+          "duration_sec": 180,
+          "tips": [
+            "Make it memorable and actionable.",
+            "Use parallel structure for rhythm.",
+            "End with a call to action or reflection."
+          ]
+        },
+        "acceptance": {
+          "metric": "takeaway_present",
+          "target": "true",
+          "how_to_measure": "system checks ending takeaway in last 10-15s"
+        }
+      }
+    ]
+  },
+  "warnings": [
+    "LLM_UNAVAILABLE",
+    "PARTIAL_REPORT"
+  ]
+}
