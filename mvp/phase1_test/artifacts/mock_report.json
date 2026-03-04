@@ -1,10 +1,10 @@
 {
   "pol_version": "POL-v0.1",
   "session": {
-    "session_id": "ac68cfb1-b568-47f2-9ba4-6d7e1bcdd742",
+    "session_id": "9b9e2a1d-2e09-4eb9-8531-709deead44fd",
     "task_type": "IMPROV_60S",
     "language": "zh",
-    "generated_at": "2026-03-01T17:08:29.953237+00:00"
+    "generated_at": "2026-03-03T23:49:31.169468+00:00"
   },
   "scores": {
     "overall": 80
@@ -12,48 +12,46 @@
   "rule_engine": {
     "triggers": [
       {
-        "id": "BR-OPP-001-R-TASK-001",
+        "id": "r_c",
         "severity": "P0",
-        "impact_score": 0.7,
-        "weight": 2.0,
-        "priority_score": 1.4,
+        "impact_score": 0.5,
+        "weight": 1.0,
+        "priority_score": 0.5,
         "conflict_priority": 1,
-        "trigger_count": 1,
+        "trigger_count": 10,
         "evidence": {
-          "time_ranges": [
-            {
-              "start_ms": 1000,
-              "end_ms": 5000
-            }
-          ],
-          "text_snippets": [
-            "示例文本片段 1"
-          ]
+          "time_ranges": [],
+          "text_snippets": []
         }
       },
       {
-        "id": "BR-OPP-002-R-TASK-002",
-        "severity": "P1",
-        "impact_score": 0.8,
+        "id": "r_b",
+        "severity": "P0",
+        "impact_score": 0.5,
         "weight": 1.0,
-        "priority_score": 0.8,
-        "conflict_priority": 2,
-        "trigger_count": 3,
+        "priority_score": 0.5,
+        "conflict_priority": 1,
+        "trigger_count": 5,
         "evidence": {
-          "time_ranges": [
-            {
-              "start_ms": 6000,
-              "end_ms": 10000
-            }
-          ],
-          "text_snippets": [
-            "示例文本片段 2",
-            "示例文本片段 3"
-          ]
+          "time_ranges": [],
+          "text_snippets": []
+        }
+      },
+      {
+        "id": "r_a",
+        "severity": "P1",
+        "impact_score": 0.2,
+        "weight": 1.0,
+        "priority_score": 0.2,
+        "conflict_priority": 3,
+        "trigger_count": 1,
+        "evidence": {
+          "time_ranges": [],
+          "text_snippets": []
         }
       }
     ],
-    "top_trigger_id": "BR-OPP-001-R-TASK-001",
+    "top_trigger_id": "r_c",
     "next_target": null
   },
   "llm_feedback": {

@@ -1,0 +1,142 @@
+{
+  "pol_version": "POL-v0.1",
+  "session": {
+    "session_id": "a04b5998-9857-487b-b17d-68374f1ba3ee",
+    "task_type": "IMPROV_60S",
+    "language": "zh",
+    "generated_at": "2026-03-03T03:04:14.473220+00:00"
+  },
+  "scores": {
+    "overall": 80
+  },
+  "rule_engine": {
+    "triggers": [
+      {
+        "id": "BR-OPP-001-R-FILLER-001",
+        "severity": "P0",
+        "impact_score": 1.0,
+        "weight": 1.0,
+        "priority_score": 1.0,
+        "conflict_priority": 1,
+        "trigger_count": 1,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 14000
+            }
+          ],
+          "text_snippets": [
+            "嗯 這個那個 我今天我按那個 這個 好吧就這樣"
+          ]
+        }
+      },
+      {
+        "id": "BR-OPP-001-R-SPEED-001",
+        "severity": "P1",
+        "impact_score": 1.0,
+        "weight": 1.0,
+        "priority_score": 1.0,
+        "conflict_priority": 4,
+        "trigger_count": 1,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 14000
+            }
+          ],
+          "text_snippets": [
+            "嗯 這個那個 我今天我按那個 這個 好吧就這樣"
+          ]
+        }
+      },
+      {
+        "id": "BR-OPP-001-R-TASK-001",
+        "severity": "P1",
+        "impact_score": 0.6,
+        "weight": 1.0,
+        "priority_score": 0.6,
+        "conflict_priority": 2,
+        "trigger_count": 1,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 14000
+            }
+          ],
+          "text_snippets": [
+            "嗯這個那個我今天我按那個這個好吧就這樣"
+          ]
+        }
+      },
+      {
+        "id": "BR-OPP-001-R-STRUCT-001",
+        "severity": "P2",
+        "impact_score": 0.5,
+        "weight": 1.0,
+        "priority_score": 0.5,
+        "conflict_priority": 3,
+        "trigger_count": 1,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 3280
+            }
+          ],
+          "text_snippets": [
+            "嗯"
+          ]
+        }
+      }
+    ],
+    "top_trigger_id": "BR-OPP-001-R-FILLER-001",
+    "next_target": null
+  },
+  "llm_feedback": {
+    "suggestions": [
+      {
+        "title": "Reduce Filler Words",
+        "problem": "Your speech contains excessive filler words.",
+        "cause": "Fillers distract the audience and reduce perceived confidence.",
+        "evidence_ref": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 14000
+            }
+          ],
+          "text_snippets": [
+            "嗯 這個那個 我今天我按那個 這個 好吧就這樣"
+          ]
+        },
+        "drill": {
+          "drill_id": "SILENCE_REPLACE",
+          "steps": [
+            "Identify filler words in your speech (um, uh, like, you know).",
+            "Replace each filler with a brief pause (1-2 seconds).",
+            "Practice with a recording device to self-monitor.",
+            "Review and count filler reduction over multiple sessions."
+          ],
+          "duration_sec": 300,
+          "tips": [
+            "Pause is better than filler.",
+            "Silence gives emphasis to your words.",
+            "Breathe before speaking to reduce fillers."
+          ]
+        },
+        "acceptance": {
+          "metric": "filler_ratio",
+          "target": "<=3%",
+          "how_to_measure": "system counts filler tokens / total tokens"
+        }
+      }
+    ]
+  },
+  "warnings": [
+    "PARTIAL_REPORT",
+    "LLM_UNAVAILABLE"
+  ]
+}

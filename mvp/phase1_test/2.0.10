@@ -1,0 +1,16 @@
+Collecting webrtcvad
+  Downloading webrtcvad-2.0.10.tar.gz (66 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Building wheels for collected packages: webrtcvad
+  Building wheel for webrtcvad (pyproject.toml): started
+  Building wheel for webrtcvad (pyproject.toml): finished with status 'done'
+  Created wheel for webrtcvad: filename=webrtcvad-2.0.10-cp311-cp311-win_amd64.whl size=19199 sha256=96f2dc0ad28568f59ea85432f9d89b6ff126e268619bcd3f856df199f0533afb
+  Stored in directory: c:\users\lenovo\appdata\local\pip\cache\wheels\94\65\3f\292d0b656be33d1c801831201c74b5f68f41a2ae465ff2ee2f
+Successfully built webrtcvad
+Installing collected packages: webrtcvad
+Successfully installed webrtcvad-2.0.10

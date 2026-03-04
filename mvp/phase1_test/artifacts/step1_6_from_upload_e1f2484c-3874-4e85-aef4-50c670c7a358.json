@@ -1,0 +1,261 @@
+{
+  "pol_version": "POL-v0.1",
+  "session": {
+    "session_id": "0d034a8f-e30d-4c0d-8033-c1b8a67ca8e5",
+    "task_type": "IMPROV_60S",
+    "language": "zh",
+    "generated_at": "2026-03-04T00:11:32.101087+00:00"
+  },
+  "scores": {
+    "overall": 51
+  },
+  "rule_engine": {
+    "triggers": [
+      {
+        "id": "BR-OPP-001-R-REPEAT-001",
+        "severity": "P0",
+        "impact_score": 1.0,
+        "weight": 1.0,
+        "priority_score": 1.0,
+        "conflict_priority": 5,
+        "trigger_count": 1,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 14000
+            }
+          ],
+          "text_snippets": [
+            "Hello Hello Hello"
+          ]
+        }
+      },
+      {
+        "id": "BR-OPP-001-R-SPEED-001",
+        "severity": "P1",
+        "impact_score": 1.0,
+        "weight": 1.0,
+        "priority_score": 1.0,
+        "conflict_priority": 4,
+        "trigger_count": 1,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 14000
+            }
+          ],
+          "text_snippets": [
+            "Hello Hello Hello"
+          ]
+        }
+      },
+      {
+        "id": "BR-OPP-001-R-TASK-001",
+        "severity": "P1",
+        "impact_score": 0.6,
+        "weight": 1.0,
+        "priority_score": 0.6,
+        "conflict_priority": 2,
+        "trigger_count": 1,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 14000
+            }
+          ],
+          "text_snippets": [
+            "Hello Hello Hello"
+          ]
+        }
+      },
+      {
+        "id": "BR-OPP-001-R-STRUCT-001",
+        "severity": "P2",
+        "impact_score": 0.5,
+        "weight": 1.0,
+        "priority_score": 0.5,
+        "conflict_priority": 3,
+        "trigger_count": 1,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 13440
+            }
+          ],
+          "text_snippets": [
+            "Hello Hello Hello"
+          ]
+        }
+      }
+    ],
+    "top_trigger_id": "BR-OPP-001-R-REPEAT-001",
+    "next_target": null
+  },
+  "llm_feedback": {
+    "suggestions": [
+      {
+        "title": "Vary Your Vocabulary",
+        "problem": "You repeat the same words or phrases frequently.",
+        "cause": "Repetition makes speech sound monotonous and less engaging.",
+        "evidence_ref": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 14000
+            }
+          ],
+          "text_snippets": [
+            "Hello Hello Hello"
+          ]
+        },
+        "drill": {
+          "drill_id": "REPLACEMENT_BANK",
+          "steps": [
+            "Identify your most frequently repeated words or phrases.",
+            "Create a list of synonyms and alternative expressions.",
+            "Practice substituting repeats with alternatives.",
+            "Get feedback on variety improvement."
+          ],
+          "duration_sec": 360,
+          "tips": [
+            "Use a thesaurus to expand vocabulary.",
+            "Vary sentence structure, not just words.",
+            "Read diverse content to absorb new expressions."
+          ]
+        },
+        "acceptance": {
+          "metric": "repeat_ratio",
+          "target": "<=5%",
+          "how_to_measure": "system computes repeated token ratio"
+        }
+      }
+    ]
+  },
+  "report_view": {
+    "chart_data": {
+      "pace_series": [
+        {
+          "t_ms": 0,
+          "speech_ms": 820
+        },
+        {
+          "t_ms": 1000,
+          "speech_ms": 1000
+        },
+        {
+          "t_ms": 2000,
+          "speech_ms": 1000
+        },
+        {
+          "t_ms": 3000,
+          "speech_ms": 1000
+        },
+        {
+          "t_ms": 4000,
+          "speech_ms": 790
+        },
+        {
+          "t_ms": 5000,
+          "speech_ms": 1000
+        },
+        {
+          "t_ms": 6000,
+          "speech_ms": 1000
+        },
+        {
+          "t_ms": 7000,
+          "speech_ms": 1000
+        },
+        {
+          "t_ms": 8000,
+          "speech_ms": 1000
+        },
+        {
+          "t_ms": 9000,
+          "speech_ms": 940
+        },
+        {
+          "t_ms": 10000,
+          "speech_ms": 1000
+        },
+        {
+          "t_ms": 11000,
+          "speech_ms": 970
+        },
+        {
+          "t_ms": 12000,
+          "speech_ms": 760
+        },
+        {
+          "t_ms": 13000,
+          "speech_ms": 440
+        }
+      ],
+      "pause_series": [
+        {
+          "start_ms": 0,
+          "end_ms": 180,
+          "duration_ms": 180
+        },
+        {
+          "start_ms": 4320,
+          "end_ms": 4530,
+          "duration_ms": 210
+        },
+        {
+          "start_ms": 9570,
+          "end_ms": 9630,
+          "duration_ms": 60
+        },
+        {
+          "start_ms": 11970,
+          "end_ms": 12060,
+          "duration_ms": 90
+        },
+        {
+          "start_ms": 12180,
+          "end_ms": 12360,
+          "duration_ms": 180
+        }
+      ]
+    },
+    "highlights": [
+      {
+        "start_ms": 0,
+        "end_ms": 13440,
+        "type": "RULE_EVIDENCE",
+        "text_snippet": "Hello Hello Hello"
+      },
+      {
+        "start_ms": 0,
+        "end_ms": 14000,
+        "type": "RULE_EVIDENCE",
+        "text_snippet": "Hello Hello Hello"
+      },
+      {
+        "start_ms": 0,
+        "end_ms": 14000,
+        "type": "RULE_EVIDENCE",
+        "text_snippet": "Hello Hello Hello"
+      },
+      {
+        "start_ms": 0,
+        "end_ms": 14000,
+        "type": "RULE_EVIDENCE",
+        "text_snippet": "Hello Hello Hello"
+      }
+    ]
+  },
+  "warnings": [
+    {
+      "code": "PARTIAL_REPORT"
+    },
+    {
+      "code": "LLM_UNAVAILABLE"
+    }
+  ]
+}

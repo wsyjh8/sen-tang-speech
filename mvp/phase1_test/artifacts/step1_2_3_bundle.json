@@ -1,0 +1,64 @@
+{
+  "step1": {
+    "ok": true,
+    "error_reason": null,
+    "asr": {
+      "transcript": "字幕by索兰娅",
+      "segments": [
+        {
+          "start_ms": 0,
+          "end_ms": 5000,
+          "text": "字幕by索兰娅",
+          "confidence": 0.3145411014556885
+        }
+      ],
+      "overall_confidence": 0.3145
+    }
+  },
+  "step2": {
+    "pause_segments": [],
+    "long_pause_count": 0,
+    "max_pause_ms": 0,
+    "pace_series": [
+      {
+        "t_ms": 0,
+        "speech_ms": 1000
+      },
+      {
+        "t_ms": 1000,
+        "speech_ms": 1000
+      },
+      {
+        "t_ms": 2000,
+        "speech_ms": 1000
+      },
+      {
+        "t_ms": 3000,
+        "speech_ms": 1000
+      },
+      {
+        "t_ms": 4000,
+        "speech_ms": 980
+      }
+    ],
+    "wpm": 12.0,
+    "speaking_rate_cpm": 84.0
+  },
+  "step3": {
+    "ok": true,
+    "error_reason": null,
+    "text_features": {
+      "total_tokens": 3,
+      "filler_count": 0,
+      "filler_per_min": 0.0,
+      "filler_ratio": 0.0,
+      "filler_tokens_top": [],
+      "repeat_ratio": 0.0,
+      "repeat_word_ratio": 0.0,
+      "top_repeated_tokens": [],
+      "ending_takeaway_present": false,
+      "first_sentence_has_conclusion": null,
+      "task_elements_present": null
+    }
+  }
+}

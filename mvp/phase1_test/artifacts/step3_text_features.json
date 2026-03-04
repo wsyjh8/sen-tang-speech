@@ -1,0 +1,17 @@
+{
+  "ok": true,
+  "error_reason": null,
+  "text_features": {
+    "total_tokens": 3,
+    "filler_count": 0,
+    "filler_per_min": 0.0,
+    "filler_ratio": 0.0,
+    "filler_tokens_top": [],
+    "repeat_ratio": 0.0,
+    "repeat_word_ratio": 0.0,
+    "top_repeated_tokens": [],
+    "ending_takeaway_present": false,
+    "first_sentence_has_conclusion": null,
+    "task_elements_present": null
+  }
+}

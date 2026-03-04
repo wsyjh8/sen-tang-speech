@@ -3,6 +3,8 @@
 import hashlib
 import json
 
+from app.llm.prompts.prompt_top5_v0_1 import SYSTEM_PROMPT, TASK_PROMPT
+
 PRM_VERSION = "PRM-v0.1"
 
 # Frozen model parameters
@@ -39,76 +41,61 @@ def build_messages(
     pol_version: str,
     top_trigger_id: str | None,
     top_trigger_evidence: dict | None,
-    transcript_snippets: str
+    transcript_snippets: str,
+    metrics: dict | None = None
 ) -> list[dict]:
     """
-    Build messages for LLM request.
-    
+    Build messages for LLM request using Top5 prompt.
+
     Args:
         pol_version: POL version string
         top_trigger_id: The top trigger rule id
         top_trigger_evidence: Evidence from top trigger
         transcript_snippets: Redacted transcript snippets (<=1200 chars)
-    
+        metrics: Optional dict with wpm/filler_ratio/repeat_ratio/long_pause_count/max_pause_ms
+
     Returns:
         List of message dicts with system and user roles.
     """
     system_message = {
         "role": "system",
-        "content": (
-            "You are a speech coaching assistant. "
-            "Generate exactly ONE actionable suggestion based on the triggered rule and evidence. "
-            "Output must be valid JSON with this exact structure:\n"
-            "{\n"
-            '  "suggestions": [\n'
-            "    {\n"
-            '      "title": "string",\n'
-            '      "problem": "string",\n'
-            '      "cause": "string",\n'
-            '      "evidence_ref": {\n'
-            '        "time_ranges": [{"start_ms": int, "end_ms": int}],\n'
-            '        "text_snippets": ["string"]\n'
-            "      },\n"
-            '      "drill": {\n'
-            '        "drill_id": "string",\n'
-            '        "steps": ["string"],\n'
-            '        "duration_sec": int,\n'
-            '        "tips": ["string"]\n'
-            "      },\n"
-            '      "acceptance": {\n'
-            '        "metric": "string",\n'
-            '        "target": "string|number",\n'
-            '        "how_to_measure": "string"\n'
-            "      }\n"
-            "    }\n"
-            "  ]\n"
-            "}\n"
-            "Rules:\n"
-            "- suggestions must be an array with 1-3 items\n"
-            "- All fields are required\n"
-            "- evidence_ref must copy from provided evidence (no fabrication)\n"
-            "- drill_id must be from allowlist: SILENCE_REPLACE, PRESET_OPENERS, REPLACEMENT_BANK, SLOW_10_PERCENT, ONE_LINE_TAKEAWAY\n"
-        )
+        "content": SYSTEM_PROMPT
     }
-    
-    evidence_context = ""
+
+    # Extract metrics
+    metrics = metrics or {}
+    wpm = metrics.get("wpm")
+    filler_ratio = metrics.get("filler_ratio")
+    repeat_ratio = metrics.get("repeat_ratio")
+    long_pause_count = metrics.get("long_pause_count")
+    max_pause_ms = metrics.get("max_pause_ms")
+
+    # Build user message using TASK_PROMPT
+    user_content = TASK_PROMPT.format(
+        pol_version=pol_version,
+        top_trigger_id=top_trigger_id,
+        wpm=wpm,
+        filler_ratio=filler_ratio,
+        repeat_ratio=repeat_ratio,
+        long_pause_count=long_pause_count,
+        max_pause_ms=max_pause_ms
+    )
+
+    # Add transcript snippets
+    user_content += f"\n\nTranscript Snippets:\n{transcript_snippets}"
+
+    # Add evidence if available
     if top_trigger_evidence:
         time_ranges = top_trigger_evidence.get("time_ranges", [])
         text_snippets = top_trigger_evidence.get("text_snippets", [])
         if time_ranges or text_snippets:
-            evidence_context = f"\nEvidence:\n- Time ranges: {time_ranges}\n- Snippets: {text_snippets}"
-    
+            user_content += f"\n\nEvidence:\n- Time ranges: {time_ranges}\n- Snippets: {text_snippets}"
+
     user_message = {
         "role": "user",
-        "content": (
-            f"POL Version: {pol_version}\n"
-            f"Triggered Rule: {top_trigger_id}\n"
-            f"Transcript Snippets:\n{transcript_snippets}"
-            f"{evidence_context}\n"
-            "\nGenerate ONE suggestion to address this issue."
-        )
+        "content": user_content
     }
-    
+
     return [system_message, user_message]
 
 

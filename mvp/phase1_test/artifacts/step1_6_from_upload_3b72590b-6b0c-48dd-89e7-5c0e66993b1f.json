@@ -1,0 +1,292 @@
+{
+  "pol_version": "POL-v0.1",
+  "session": {
+    "session_id": "dd5ab488-1337-49d2-953d-11551acd89df",
+    "task_type": "IMPROV_60S",
+    "language": "zh",
+    "generated_at": "2026-03-03T22:59:28.970146+00:00"
+  },
+  "scores": {
+    "overall": 48
+  },
+  "rule_engine": {
+    "triggers": [
+      {
+        "id": "BR-OPP-001-R-REPEAT-001",
+        "severity": "P0",
+        "impact_score": 1.0,
+        "weight": 1.0,
+        "priority_score": 1.0,
+        "conflict_priority": 5,
+        "trigger_count": 1,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 14000
+            }
+          ],
+          "text_snippets": [
+            "呃 这个 这个 这个 这个 这个 这个 这个 这个 哪个 哪个 这个 这个 这个 哪个 哎呀 我不知道要说什么了"
+          ]
+        }
+      },
+      {
+        "id": "BR-OPP-001-R-SPEED-001",
+        "severity": "P1",
+        "impact_score": 1.0,
+        "weight": 1.0,
+        "priority_score": 1.0,
+        "conflict_priority": 4,
+        "trigger_count": 1,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 14000
+            }
+          ],
+          "text_snippets": [
+            "呃 这个 这个 这个 这个 这个 这个 这个 这个 哪个 哪个 这个 这个 这个 哪个 哎呀 我不知道要说什么了"
+          ]
+        }
+      },
+      {
+        "id": "BR-OPP-001-R-TASK-001",
+        "severity": "P1",
+        "impact_score": 0.6,
+        "weight": 1.0,
+        "priority_score": 0.6,
+        "conflict_priority": 2,
+        "trigger_count": 1,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 14000
+            }
+          ],
+          "text_snippets": [
+            "呃 这个 这个 这个 这个 这个 这个 这个 这个 哪个 哪个 这个 这个 这个 哪个哎呀 我不知道要说什么了"
+          ]
+        }
+      },
+      {
+        "id": "BR-OPP-001-R-STRUCT-001",
+        "severity": "P2",
+        "impact_score": 0.5,
+        "weight": 1.0,
+        "priority_score": 0.5,
+        "conflict_priority": 3,
+        "trigger_count": 1,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 10740
+            }
+          ],
+          "text_snippets": [
+            "呃 这个 这个 这个 这个 这个 这个 这个 这个 哪个 哪个 这个 这个 这个 哪个"
+          ]
+        }
+      },
+      {
+        "id": "BR-OPP-001-R-FILLER-001",
+        "severity": "P1",
+        "impact_score": 0.288,
+        "weight": 1.0,
+        "priority_score": 0.288,
+        "conflict_priority": 1,
+        "trigger_count": 1,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 14000
+            }
+          ],
+          "text_snippets": [
+            "呃 这个 这个 这个 这个 这个 这个 这个 这个 哪个 哪个 这个 这个 这个 哪个 哎呀 我不知道要说什么了"
+          ]
+        }
+      }
+    ],
+    "top_trigger_id": "BR-OPP-001-R-REPEAT-001",
+    "next_target": null
+  },
+  "llm_feedback": {
+    "suggestions": [
+      {
+        "title": "Vary Your Vocabulary",
+        "problem": "You repeat the same words or phrases frequently.",
+        "cause": "Repetition makes speech sound monotonous and less engaging.",
+        "evidence_ref": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 14000
+            }
+          ],
+          "text_snippets": [
+            "呃 这个 这个 这个 这个 这个 这个 这个 这个 哪个 哪个 这个 这个 这个 哪个 哎呀 我不知道要说什么了"
+          ]
+        },
+        "drill": {
+          "drill_id": "REPLACEMENT_BANK",
+          "steps": [
+            "Identify your most frequently repeated words or phrases.",
+            "Create a list of synonyms and alternative expressions.",
+            "Practice substituting repeats with alternatives.",
+            "Get feedback on variety improvement."
+          ],
+          "duration_sec": 360,
+          "tips": [
+            "Use a thesaurus to expand vocabulary.",
+            "Vary sentence structure, not just words.",
+            "Read diverse content to absorb new expressions."
+          ]
+        },
+        "acceptance": {
+          "metric": "repeat_ratio",
+          "target": "<=5%",
+          "how_to_measure": "system computes repeated token ratio"
+        }
+      }
+    ]
+  },
+  "report_view": {
+    "chart_data": {
+      "pace_series": [
+        {
+          "t_ms": 0,
+          "speech_ms": 850
+        },
+        {
+          "t_ms": 1000,
+          "speech_ms": 1000
+        },
+        {
+          "t_ms": 2000,
+          "speech_ms": 1000
+        },
+        {
+          "t_ms": 3000,
+          "speech_ms": 1000
+        },
+        {
+          "t_ms": 4000,
+          "speech_ms": 430
+        },
+        {
+          "t_ms": 5000,
+          "speech_ms": 880
+        },
+        {
+          "t_ms": 6000,
+          "speech_ms": 250
+        },
+        {
+          "t_ms": 7000,
+          "speech_ms": 1000
+        },
+        {
+          "t_ms": 8000,
+          "speech_ms": 1000
+        },
+        {
+          "t_ms": 9000,
+          "speech_ms": 1000
+        },
+        {
+          "t_ms": 10000,
+          "speech_ms": 80
+        },
+        {
+          "t_ms": 11000,
+          "speech_ms": 660
+        },
+        {
+          "t_ms": 12000,
+          "speech_ms": 1000
+        },
+        {
+          "t_ms": 13000,
+          "speech_ms": 440
+        }
+      ],
+      "pause_series": [
+        {
+          "start_ms": 0,
+          "end_ms": 150,
+          "duration_ms": 150
+        },
+        {
+          "start_ms": 4020,
+          "end_ms": 4590,
+          "duration_ms": 570
+        },
+        {
+          "start_ms": 5880,
+          "end_ms": 6750,
+          "duration_ms": 870
+        },
+        {
+          "start_ms": 10080,
+          "end_ms": 11340,
+          "duration_ms": 1260
+        },
+        {
+          "start_ms": 13350,
+          "end_ms": 13440,
+          "duration_ms": 90
+        },
+        {
+          "start_ms": 13530,
+          "end_ms": 13560,
+          "duration_ms": 30
+        }
+      ]
+    },
+    "highlights": [
+      {
+        "start_ms": 0,
+        "end_ms": 10740,
+        "type": "RULE_EVIDENCE",
+        "text_snippet": "呃 这个 这个 这个 这个 这个 这个 这个 这个 哪个 哪个 这个 这个 这个 哪个"
+      },
+      {
+        "start_ms": 0,
+        "end_ms": 14000,
+        "type": "RULE_EVIDENCE",
+        "text_snippet": "呃 这个 这个 这个 这个 这个 这个 这个 这个 哪个 哪个 这个 这个 这个 哪个 哎呀 我不知道要说什么了"
+      },
+      {
+        "start_ms": 0,
+        "end_ms": 14000,
+        "type": "RULE_EVIDENCE",
+        "text_snippet": "呃 这个 这个 这个 这个 这个 这个 这个 这个 哪个 哪个 这个 这个 这个 哪个 哎呀 我不知道要说什么了"
+      },
+      {
+        "start_ms": 0,
+        "end_ms": 14000,
+        "type": "RULE_EVIDENCE",
+        "text_snippet": "呃 这个 这个 这个 这个 这个 这个 这个 这个 哪个 哪个 这个 这个 这个 哪个 哎呀 我不知道要说什么了"
+      },
+      {
+        "start_ms": 0,
+        "end_ms": 14000,
+        "type": "RULE_EVIDENCE",
+        "text_snippet": "呃 这个 这个 这个 这个 这个 这个 这个 这个 哪个 哪个 这个 这个 这个 哪个哎呀 我不知道要说什么了"
+      }
+    ]
+  },
+  "warnings": [
+    {
+      "code": "PARTIAL_REPORT"
+    },
+    {
+      "code": "LLM_UNAVAILABLE"
+    }
+  ]
+}

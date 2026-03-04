@@ -1,0 +1,211 @@
+{
+  "pol_version": "POL-v0.1",
+  "session": {
+    "session_id": "4d373f94-db0d-47e6-a706-d9ee7aa16dd3",
+    "task_type": "IMPROV_60S",
+    "language": "zh",
+    "generated_at": "2026-03-04T00:09:54.149567+00:00"
+  },
+  "scores": {
+    "overall": 69
+  },
+  "rule_engine": {
+    "triggers": [
+      {
+        "id": "BR-OPP-001-R-SPEED-001",
+        "severity": "P1",
+        "impact_score": 1.0,
+        "weight": 1.0,
+        "priority_score": 1.0,
+        "conflict_priority": 4,
+        "trigger_count": 1,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 8000
+            }
+          ],
+          "text_snippets": [
+            "一二二 这个这个"
+          ]
+        }
+      },
+      {
+        "id": "BR-OPP-001-R-TASK-001",
+        "severity": "P1",
+        "impact_score": 0.6,
+        "weight": 1.0,
+        "priority_score": 0.6,
+        "conflict_priority": 2,
+        "trigger_count": 1,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 8000
+            }
+          ],
+          "text_snippets": [
+            "一二二这个这个"
+          ]
+        }
+      },
+      {
+        "id": "BR-OPP-001-R-STRUCT-001",
+        "severity": "P2",
+        "impact_score": 0.5,
+        "weight": 1.0,
+        "priority_score": 0.5,
+        "conflict_priority": 3,
+        "trigger_count": 1,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 3000
+            }
+          ],
+          "text_snippets": [
+            "一二二"
+          ]
+        }
+      }
+    ],
+    "top_trigger_id": "BR-OPP-001-R-SPEED-001",
+    "next_target": null
+  },
+  "llm_feedback": {
+    "suggestions": [
+      {
+        "title": "Adjust Speaking Pace",
+        "problem": "Your speaking rate is outside the optimal range.",
+        "cause": "Too fast reduces comprehension; too slow loses engagement.",
+        "evidence_ref": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 8000
+            }
+          ],
+          "text_snippets": [
+            "一二二 这个这个"
+          ]
+        },
+        "drill": {
+          "drill_id": "PRESET_OPENERS",
+          "steps": [
+            "Prepare 3-5 standard opening phrases for your topic type.",
+            "Practice each opener until it feels natural.",
+            "Record yourself and compare different openers.",
+            "Select the most engaging opener for your context."
+          ],
+          "duration_sec": 240,
+          "tips": [
+            "Start with a hook: question, fact, or story.",
+            "Avoid generic greetings like 'Today I will talk about...'",
+            "Match opener tone to your audience."
+          ]
+        },
+        "acceptance": {
+          "metric": "wpm",
+          "target": "120-190",
+          "how_to_measure": "system computed wpm"
+        }
+      }
+    ]
+  },
+  "report_view": {
+    "chart_data": {
+      "pace_series": [
+        {
+          "t_ms": 0,
+          "speech_ms": 700
+        },
+        {
+          "t_ms": 1000,
+          "speech_ms": 1000
+        },
+        {
+          "t_ms": 2000,
+          "speech_ms": 940
+        },
+        {
+          "t_ms": 3000,
+          "speech_ms": 930
+        },
+        {
+          "t_ms": 4000,
+          "speech_ms": 140
+        },
+        {
+          "t_ms": 5000,
+          "speech_ms": 940
+        },
+        {
+          "t_ms": 6000,
+          "speech_ms": 940
+        },
+        {
+          "t_ms": 7000,
+          "speech_ms": 320
+        }
+      ],
+      "pause_series": [
+        {
+          "start_ms": 0,
+          "end_ms": 300,
+          "duration_ms": 300
+        },
+        {
+          "start_ms": 2400,
+          "end_ms": 2460,
+          "duration_ms": 60
+        },
+        {
+          "start_ms": 3930,
+          "end_ms": 4860,
+          "duration_ms": 930
+        },
+        {
+          "start_ms": 5370,
+          "end_ms": 5430,
+          "duration_ms": 60
+        },
+        {
+          "start_ms": 6510,
+          "end_ms": 6570,
+          "duration_ms": 60
+        }
+      ]
+    },
+    "highlights": [
+      {
+        "start_ms": 0,
+        "end_ms": 3000,
+        "type": "RULE_EVIDENCE",
+        "text_snippet": "一二二"
+      },
+      {
+        "start_ms": 0,
+        "end_ms": 8000,
+        "type": "RULE_EVIDENCE",
+        "text_snippet": "一二二 这个这个"
+      },
+      {
+        "start_ms": 0,
+        "end_ms": 8000,
+        "type": "RULE_EVIDENCE",
+        "text_snippet": "一二二这个这个"
+      }
+    ]
+  },
+  "warnings": [
+    {
+      "code": "PARTIAL_REPORT"
+    },
+    {
+      "code": "LLM_UNAVAILABLE"
+    }
+  ]
+}

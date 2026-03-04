@@ -2,3 +2,5 @@ fastapi>=0.109.0
 uvicorn[standard]>=0.27.0
 pytest
 httpx
+faster-whisper>=1.0.0
+webrtcvad>=2.0.10

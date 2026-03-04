@@ -1,0 +1,214 @@
+{
+  "pol_version": "POL-v0.1",
+  "session": {
+    "session_id": "bd7f3639-5a7a-41b1-819d-591ca0aa9dc6",
+    "task_type": "IMPROV_60S",
+    "language": "zh",
+    "generated_at": "2026-03-04T00:49:04.757105+00:00"
+  },
+  "scores": {
+    "overall": 72
+  },
+  "rule_engine": {
+    "triggers": [
+      {
+        "id": "BR-OPP-001-R-SPEED-001",
+        "severity": "P1",
+        "impact_score": 1.0,
+        "weight": 1.0,
+        "priority_score": 1.0,
+        "conflict_priority": 4,
+        "trigger_count": 1,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 14000
+            }
+          ],
+          "text_snippets": [
+            "因为这是我第一次面试 所以我不太清楚的规则 但是我相信我会努力 会成功努力做到成功吧"
+          ]
+        }
+      },
+      {
+        "id": "BR-OPP-001-R-STRUCT-001",
+        "severity": "P2",
+        "impact_score": 0.5,
+        "weight": 1.0,
+        "priority_score": 0.5,
+        "conflict_priority": 3,
+        "trigger_count": 1,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 3400
+            }
+          ],
+          "text_snippets": [
+            "因为这是我第一次面试"
+          ]
+        }
+      }
+    ],
+    "top_trigger_id": "BR-OPP-001-R-SPEED-001",
+    "next_target": null
+  },
+  "llm_feedback": {
+    "suggestions": [
+      {
+        "title": "Adjust Speaking Pace",
+        "problem": "Your speaking rate is outside the optimal range.",
+        "cause": "Too fast reduces comprehension; too slow loses engagement.",
+        "evidence_ref": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 14000
+            }
+          ],
+          "text_snippets": [
+            "因为这是我第一次面试 所以我不太清楚的规则 但是我相信我会努力 会成功努力做到成功吧"
+          ]
+        },
+        "drill": {
+          "drill_id": "PRESET_OPENERS",
+          "steps": [
+            "Prepare 3-5 standard opening phrases for your topic type.",
+            "Practice each opener until it feels natural.",
+            "Record yourself and compare different openers.",
+            "Select the most engaging opener for your context."
+          ],
+          "duration_sec": 240,
+          "tips": [
+            "Start with a hook: question, fact, or story.",
+            "Avoid generic greetings like 'Today I will talk about...'",
+            "Match opener tone to your audience."
+          ]
+        },
+        "acceptance": {
+          "metric": "wpm",
+          "target": "120-190",
+          "how_to_measure": "system computed wpm"
+        }
+      }
+    ]
+  },
+  "report_view": {
+    "chart_data": {
+      "pace_series": [
+        {
+          "t_ms": 0,
+          "speech_ms": 730
+        },
+        {
+          "t_ms": 1000,
+          "speech_ms": 1000
+        },
+        {
+          "t_ms": 2000,
+          "speech_ms": 1000
+        },
+        {
+          "t_ms": 3000,
+          "speech_ms": 1000
+        },
+        {
+          "t_ms": 4000,
+          "speech_ms": 1000
+        },
+        {
+          "t_ms": 5000,
+          "speech_ms": 850
+        },
+        {
+          "t_ms": 6000,
+          "speech_ms": 700
+        },
+        {
+          "t_ms": 7000,
+          "speech_ms": 1000
+        },
+        {
+          "t_ms": 8000,
+          "speech_ms": 1000
+        },
+        {
+          "t_ms": 9000,
+          "speech_ms": 930
+        },
+        {
+          "t_ms": 10000,
+          "speech_ms": 140
+        },
+        {
+          "t_ms": 11000,
+          "speech_ms": 1000
+        },
+        {
+          "t_ms": 12000,
+          "speech_ms": 600
+        },
+        {
+          "t_ms": 13000,
+          "speech_ms": 30
+        }
+      ],
+      "pause_series": [
+        {
+          "start_ms": 0,
+          "end_ms": 270,
+          "duration_ms": 270
+        },
+        {
+          "start_ms": 5310,
+          "end_ms": 5460,
+          "duration_ms": 150
+        },
+        {
+          "start_ms": 6300,
+          "end_ms": 6600,
+          "duration_ms": 300
+        },
+        {
+          "start_ms": 9930,
+          "end_ms": 10050,
+          "duration_ms": 120
+        },
+        {
+          "start_ms": 10140,
+          "end_ms": 10950,
+          "duration_ms": 810
+        },
+        {
+          "start_ms": 12600,
+          "end_ms": 13170,
+          "duration_ms": 570
+        }
+      ]
+    },
+    "highlights": [
+      {
+        "start_ms": 0,
+        "end_ms": 3400,
+        "type": "RULE_EVIDENCE",
+        "text_snippet": "因为这是我第一次面试"
+      },
+      {
+        "start_ms": 0,
+        "end_ms": 14000,
+        "type": "RULE_EVIDENCE",
+        "text_snippet": "因为这是我第一次面试 所以我不太清楚的规则 但是我相信我会努力 会成功努力做到成功吧"
+      }
+    ]
+  },
+  "warnings": [
+    {
+      "code": "PARTIAL_REPORT"
+    },
+    {
+      "code": "LLM_UNAVAILABLE"
+    }
+  ]
+}

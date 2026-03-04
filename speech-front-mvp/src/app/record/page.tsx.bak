@@ -1,0 +1,212 @@
+"use client";
+
+import { useState, useRef } from "react";
+import { uploadAudio, type UploadResponse } from "@/lib/upload";
+
+const MAX_DURATION_SEC = 60;
+
+export default function RecordPage() {
+  const [isRecording, setIsRecording] = useState(false);
+  const [elapsed, setElapsed] = useState(0);
+  const [audioUrl, setAudioUrl] = useState<string | null>(null);
+  const [recordedFile, setRecordedFile] = useState<File | null>(null);
+  const [uploadResult, setUploadResult] = useState<UploadResponse | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [isUploading, setIsUploading] = useState(false);
+
+  const mediaRecorderRef = useRef<MediaRecorder | null>(null);
+  const chunksRef = useRef<Blob[]>([]);
+  const streamRef = useRef<MediaStream | null>(null);
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+  const startTimeRef = useRef<number | null>(null);
+
+  // 计时器
+  const startTimer = () => {
+    startTimeRef.current = Date.now();
+    setElapsed(0);
+    timerRef.current = setInterval(() => {
+      if (startTimeRef.current) {
+        const seconds = Math.floor((Date.now() - startTimeRef.current) / 1000);
+        setElapsed(seconds);
+        if (seconds >= MAX_DURATION_SEC) {
+          stopRecording();
+        }
+      }
+    }, 1000);
+  };
+
+  const stopTimer = () => {
+    if (timerRef.current) {
+      clearInterval(timerRef.current);
+      timerRef.current = null;
+    }
+  };
+
+  // 开始录音
+  const startRecording = async () => {
+    setError(null);
+    setAudioUrl(null);
+    setRecordedFile(null);
+    setUploadResult(null);
+    chunksRef.current = [];
+
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      streamRef.current = stream;
+
+      // 选择 mimeType
+      let mimeType = "audio/webm;codecs=opus";
+      if (!MediaRecorder.isTypeSupported(mimeType)) {
+        mimeType = "audio/webm";
+        if (!MediaRecorder.isTypeSupported(mimeType)) {
+          mimeType = ""; // 让浏览器自动选择
+        }
+      }
+
+      const mediaRecorder = new MediaRecorder(stream, mimeType ? { mimeType } : undefined);
+      mediaRecorderRef.current = mediaRecorder;
+
+      mediaRecorder.ondataavailable = (event) => {
+        if (event.data.size > 0) {
+          chunksRef.current.push(event.data);
+        }
+      };
+
+      mediaRecorder.onstop = () => {
+        const blob = new Blob(chunksRef.current, { type: mediaRecorder.mimeType || "audio/webm" });
+        const url = URL.createObjectURL(blob);
+        setAudioUrl(url);
+
+        const file = new File([blob], `recording_${Date.now()}.webm`, {
+          type: mediaRecorder.mimeType || "audio/webm",
+        });
+        setRecordedFile(file);
+      };
+
+      mediaRecorder.start();
+      setIsRecording(true);
+      startTimer();
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "无法访问麦克风";
+      setError(msg);
+    }
+  };
+
+  // 停止录音
+  const stopRecording = () => {
+    stopTimer();
+
+    if (mediaRecorderRef.current && mediaRecorderRef.current.state !== "inactive") {
+      mediaRecorderRef.current.stop();
+    }
+
+    if (streamRef.current) {
+      streamRef.current.getTracks().forEach((track) => track.stop());
+      streamRef.current = null;
+    }
+
+    setIsRecording(false);
+  };
+
+  // 上传录音
+  const handleUpload = async () => {
+    if (!recordedFile) return;
+
+    setIsUploading(true);
+    setError(null);
+    setUploadResult(null);
+
+    try {
+      const result = await uploadAudio(recordedFile);
+      setUploadResult(result);
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : "上传失败";
+      setError(msg);
+    } finally {
+      setIsUploading(false);
+    }
+  };
+
+  // 格式化时间
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+  };
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gray-50">
+      <div className="max-w-md w-full p-6 bg-white rounded-lg shadow-md">
+        <h1 className="text-2xl font-bold text-center mb-6">录音上传</h1>
+
+        {/* 错误信息 */}
+        {error && (
+          <div className="mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded">
+            {error}
+          </div>
+        )}
+
+        {/* 计时器 */}
+        <div className="text-center mb-4">
+          <span className={`text-4xl font-mono ${isRecording ? "text-red-600" : "text-gray-700"}`}>
+            {formatTime(elapsed)}
+          </span>
+          {isRecording && <span className="ml-2 text-red-600 animate-pulse">● 录音中</span>}
+          <p className="text-sm text-gray-500 mt-1">最大时长：{MAX_DURATION_SEC}秒</p>
+        </div>
+
+        {/* 控制按钮 */}
+        <div className="flex gap-3 mb-6">
+          <button
+            onClick={startRecording}
+            disabled={isRecording}
+            className="flex-1 py-3 px-4 bg-green-600 hover:bg-green-700 disabled:bg-green-400 text-white font-semibold rounded-lg transition-colors"
+          >
+            开始录音
+          </button>
+          <button
+            onClick={stopRecording}
+            disabled={!isRecording}
+            className="flex-1 py-3 px-4 bg-red-600 hover:bg-red-700 disabled:bg-red-400 text-white font-semibold rounded-lg transition-colors"
+          >
+            停止
+          </button>
+        </div>
+
+        {/* 回放 */}
+        {audioUrl && (
+          <div className="mb-6">
+            <p className="text-sm font-medium text-gray-700 mb-2">录音回放</p>
+            <audio controls src={audioUrl} className="w-full" />
+          </div>
+        )}
+
+        {/* 上传按钮 */}
+        {recordedFile && (
+          <button
+            onClick={handleUpload}
+            disabled={isUploading}
+            className="w-full py-3 px-4 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white font-semibold rounded-lg transition-colors mb-4"
+          >
+            {isUploading ? "上传中..." : "上传录音"}
+          </button>
+        )}
+
+        {/* 上传结果 */}
+        {uploadResult && (
+          <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded">
+            <p className="font-medium text-green-800 mb-2">上传成功</p>
+            <div className="text-sm text-green-700 space-y-1">
+              <p>
+                <span className="font-medium">upload_id:</span> {uploadResult.upload_id}
+              </p>
+              <p>
+                <span className="font-medium">saved_path:</span> {uploadResult.saved_path}
+              </p>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}

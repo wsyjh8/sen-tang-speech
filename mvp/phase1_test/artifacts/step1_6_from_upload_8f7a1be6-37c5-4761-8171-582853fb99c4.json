@@ -1,0 +1,317 @@
+{
+  "pol_version": "POL-v0.1",
+  "session": {
+    "session_id": "f168c6a1-4cc8-4b5d-8297-abefb10d5c83",
+    "task_type": "IMPROV_60S",
+    "language": "zh",
+    "generated_at": "2026-03-03T21:53:20.796361+00:00"
+  },
+  "scores": {
+    "overall": 48
+  },
+  "rule_engine": {
+    "triggers": [
+      {
+        "id": "BR-OPP-001-R-FILLER-001",
+        "severity": "P0",
+        "impact_score": 1.0,
+        "weight": 1.0,
+        "priority_score": 1.0,
+        "conflict_priority": 1,
+        "trigger_count": 1,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 14000
+            }
+          ],
+          "text_snippets": [
+            "呃,这个那个我今天,哦,啊那个,啊这个,哦,好吧就这样"
+          ]
+        }
+      },
+      {
+        "id": "BR-OPP-001-R-SPEED-001",
+        "severity": "P1",
+        "impact_score": 1.0,
+        "weight": 1.0,
+        "priority_score": 1.0,
+        "conflict_priority": 4,
+        "trigger_count": 1,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 14000
+            }
+          ],
+          "text_snippets": [
+            "呃,这个那个我今天,哦,啊那个,啊这个,哦,好吧就这样"
+          ]
+        }
+      },
+      {
+        "id": "BR-OPP-001-R-REPEAT-001",
+        "severity": "P1",
+        "impact_score": 0.6193,
+        "weight": 1.0,
+        "priority_score": 0.6193,
+        "conflict_priority": 5,
+        "trigger_count": 1,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 14000
+            }
+          ],
+          "text_snippets": [
+            "呃,这个那个我今天,哦,啊那个,啊这个,哦,好吧就这样"
+          ]
+        }
+      },
+      {
+        "id": "BR-OPP-001-R-TASK-001",
+        "severity": "P1",
+        "impact_score": 0.6,
+        "weight": 1.0,
+        "priority_score": 0.6,
+        "conflict_priority": 2,
+        "trigger_count": 1,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 14000
+            }
+          ],
+          "text_snippets": [
+            "呃,这个那个我今天,哦,啊那个,啊这个,哦,好吧就这样"
+          ]
+        }
+      },
+      {
+        "id": "BR-OPP-001-R-STRUCT-001",
+        "severity": "P2",
+        "impact_score": 0.5,
+        "weight": 1.0,
+        "priority_score": 0.5,
+        "conflict_priority": 3,
+        "trigger_count": 1,
+        "evidence": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 13994
+            }
+          ],
+          "text_snippets": [
+            "呃,这个那个我今天,哦,啊那个,啊这个,哦,好吧就这样"
+          ]
+        }
+      }
+    ],
+    "top_trigger_id": "BR-OPP-001-R-FILLER-001",
+    "next_target": null
+  },
+  "llm_feedback": {
+    "suggestions": [
+      {
+        "title": "Reduce Filler Words",
+        "problem": "Your speech contains excessive filler words.",
+        "cause": "Fillers distract the audience and reduce perceived confidence.",
+        "evidence_ref": {
+          "time_ranges": [
+            {
+              "start_ms": 0,
+              "end_ms": 14000
+            }
+          ],
+          "text_snippets": [
+            "呃,这个那个我今天,哦,啊那个,啊这个,哦,好吧就这样"
+          ]
+        },
+        "drill": {
+          "drill_id": "SILENCE_REPLACE",
+          "steps": [
+            "Identify filler words in your speech (um, uh, like, you know).",
+            "Replace each filler with a brief pause (1-2 seconds).",
+            "Practice with a recording device to self-monitor.",
+            "Review and count filler reduction over multiple sessions."
+          ],
+          "duration_sec": 300,
+          "tips": [
+            "Pause is better than filler.",
+            "Silence gives emphasis to your words.",
+            "Breathe before speaking to reduce fillers."
+          ]
+        },
+        "acceptance": {
+          "metric": "filler_ratio",
+          "target": "<=3%",
+          "how_to_measure": "system counts filler tokens / total tokens"
+        }
+      }
+    ]
+  },
+  "report_view": {
+    "chart_data": {
+      "pace_series": [
+        {
+          "t_ms": 0,
+          "speech_ms": 0
+        },
+        {
+          "t_ms": 1000,
+          "speech_ms": 530
+        },
+        {
+          "t_ms": 2000,
+          "speech_ms": 730
+        },
+        {
+          "t_ms": 3000,
+          "speech_ms": 270
+        },
+        {
+          "t_ms": 4000,
+          "speech_ms": 350
+        },
+        {
+          "t_ms": 5000,
+          "speech_ms": 1000
+        },
+        {
+          "t_ms": 6000,
+          "speech_ms": 240
+        },
+        {
+          "t_ms": 7000,
+          "speech_ms": 890
+        },
+        {
+          "t_ms": 8000,
+          "speech_ms": 460
+        },
+        {
+          "t_ms": 9000,
+          "speech_ms": 820
+        },
+        {
+          "t_ms": 10000,
+          "speech_ms": 520
+        },
+        {
+          "t_ms": 11000,
+          "speech_ms": 970
+        },
+        {
+          "t_ms": 12000,
+          "speech_ms": 190
+        },
+        {
+          "t_ms": 13000,
+          "speech_ms": 980
+        }
+      ],
+      "pause_series": [
+        {
+          "start_ms": 0,
+          "end_ms": 1470,
+          "duration_ms": 1470
+        },
+        {
+          "start_ms": 2400,
+          "end_ms": 2670,
+          "duration_ms": 270
+        },
+        {
+          "start_ms": 3270,
+          "end_ms": 4020,
+          "duration_ms": 750
+        },
+        {
+          "start_ms": 4110,
+          "end_ms": 4260,
+          "duration_ms": 150
+        },
+        {
+          "start_ms": 4350,
+          "end_ms": 4830,
+          "duration_ms": 480
+        },
+        {
+          "start_ms": 6240,
+          "end_ms": 7050,
+          "duration_ms": 810
+        },
+        {
+          "start_ms": 7170,
+          "end_ms": 7230,
+          "duration_ms": 60
+        },
+        {
+          "start_ms": 8460,
+          "end_ms": 9180,
+          "duration_ms": 720
+        },
+        {
+          "start_ms": 10020,
+          "end_ms": 10500,
+          "duration_ms": 480
+        },
+        {
+          "start_ms": 11580,
+          "end_ms": 11610,
+          "duration_ms": 30
+        },
+        {
+          "start_ms": 12030,
+          "end_ms": 12840,
+          "duration_ms": 810
+        }
+      ]
+    },
+    "highlights": [
+      {
+        "start_ms": 0,
+        "end_ms": 13994,
+        "type": "RULE_EVIDENCE",
+        "text_snippet": "呃,这个那个我今天,哦,啊那个,啊这个,哦,好吧就这样"
+      },
+      {
+        "start_ms": 0,
+        "end_ms": 14000,
+        "type": "RULE_EVIDENCE",
+        "text_snippet": "呃,这个那个我今天,哦,啊那个,啊这个,哦,好吧就这样"
+      },
+      {
+        "start_ms": 0,
+        "end_ms": 14000,
+        "type": "RULE_EVIDENCE",
+        "text_snippet": "呃,这个那个我今天,哦,啊那个,啊这个,哦,好吧就这样"
+      },
+      {
+        "start_ms": 0,
+        "end_ms": 14000,
+        "type": "RULE_EVIDENCE",
+        "text_snippet": "呃,这个那个我今天,哦,啊那个,啊这个,哦,好吧就这样"
+      },
+      {
+        "start_ms": 0,
+        "end_ms": 14000,
+        "type": "RULE_EVIDENCE",
+        "text_snippet": "呃,这个那个我今天,哦,啊那个,啊这个,哦,好吧就这样"
+      }
+    ]
+  },
+  "warnings": [
+    {
+      "code": "PARTIAL_REPORT"
+    },
+    {
+      "code": "LLM_UNAVAILABLE"
+    }
+  ]
+}
